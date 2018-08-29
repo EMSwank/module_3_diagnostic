@@ -1,9 +1,11 @@
+require 'rails_helper'
+
 describe "A user" do
   context "visits the root path" do
     it "enters zip code into a form and gets results" do
       visit "/"
 
-      fill_in :search, with: "80203"
+      fill_in :q, with: "80203"
 
       click_on "Locate"
 
