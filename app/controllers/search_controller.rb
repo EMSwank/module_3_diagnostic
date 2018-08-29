@@ -9,8 +9,8 @@ class SearchController < ApplicationController
     response = @conn.get("/api/alt-fuel-stations/v1/nearest.json?location=#{zip}")
 
     results = JSON.parse(response.body, symbolize_names: true)[:fuel_stations]
-    
-    @stations = results.map do |result|
+
+    @stations = results.take(10).map do |result|
       Station.new(result)
     end
   end
