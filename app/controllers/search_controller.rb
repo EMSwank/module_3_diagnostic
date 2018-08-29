@@ -10,6 +10,8 @@ class SearchController < ApplicationController
 
     results = JSON.parse(response.body, symbolize_names: true)
 
+binding.pry
+
     @stations = results.map do |result|
       Station.new(result)
     end
