@@ -12,6 +12,11 @@ describe "A user" do
       expect(current_path).to eq(search_path)
       expect(page).to have_content("10 Results")
       expect(page).to have_css(".station", count: 10)
+      expect(page).to_not have_content("BD") 
+      expect(page).to_not have_content("CNG") 
+      expect(page).to_not have_content("E85") 
+      expect(page).to_not have_content("HY") 
+      expect(page).to_not have_content("LNG") 
 
       within (first(".station")) do
         expect(page).to have_css(".name")
