@@ -13,7 +13,7 @@ describe "A user" do
       expect(page).to have_content("10 Results")
       expect(page).to have_css(".station", count: 10)
 
-      within (first(".member")) do
+      within (first(".station")) do
         expect(page).to have_css(".name")
         expect(page).to have_css(".address")
         expect(page).to have_css(".fuel_type")
