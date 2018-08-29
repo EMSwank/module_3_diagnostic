@@ -5,9 +5,13 @@ class SearchController < ApplicationController
       faraday.headers["X-API-KEY"] = "9QJhTjDEGmGnzvFWWEF4jfeMXC57X9c6K6l3gcvu"
       faraday.adapter Faraday.default_adapter
     end
-    
+
     response = @conn.get("/api/alt-fuel-stations/v1/nearest.json?location=#{zip}")
 
-    @stations = JSON.parse(response.body, symbolize_names: true)[:results]
+    results = JSON.parse(response.body, symbolize_names: true)
+
+    @stations = results.map do |result|
+      Station.new(result)
+    end
   end
 end
